@@ -1,0 +1,4 @@
+#update-rc.d -f inetd remove----全てのRunLevelからinetdのリンクを削除します。
+これで、inetdは起動しなくなりますが、もしinetdをupdateした場合、またリンクが作成されてしまします。
+これを防ぐために、使用していないRunLevelに停止用のリンクを作成しておくといいでしょう。
+#update-rc.d inetd stop 20 5 .

@@ -1,0 +1,10 @@
+echo '* ident' >> ./.git/info/attributes
+
+
+git check-attr ident hoge
+
+
+完全に個人的な趣味です。任意のディレクトリに .gitattributes、または $GIT_DIR/info/attributes を作成し、以下の内容を記述します。前者であれば git add することで、pull されたリポジトリにも影響を与えることができます。ただし、$Id$ の置き換わるタイミングは checkout をしたときなどに限られます。
+
+% cat >> .gitattributes
+*       ident

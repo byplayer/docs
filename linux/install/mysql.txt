@@ -1,0 +1,120 @@
+#########################################################################################
+# build
+
+# ソースコンパイル用ユーザになる
+cd /usr/local/src
+wget http://dev.mysql.com/get/Downloads/MySQL-5.1/mysql-5.1.34.tar.gz/from/http://ftp.iij.ad.jp/pub/db/mysql/
+
+setenv MYSQL_VER 5.1.34
+
+tar xzf mysql-${MYSQL_VER}.tar.gz
+cd mysql-${MYSQL_VER}
+
+./configure --prefix=/usr/local/mysql-${MYSQL_VER} \
+  --with-charset=utf8 \
+  --with-extra-charsets=all
+
+make
+
+sudo make install
+
+
+cd /usr/local
+sudo rm mysql
+sudo ln -s mysql-5.1.34 mysql
+
+
+sudo groupadd mysql
+sudo useradd -g mysql mysql -s /sbin/false
+
+cd /var/log
+mkdir mysql
+chown -R mysql:mysql mysql
+
+
+cd /usr/local/mysql-5.1.34
+cp share/mysql/my-medium.cnf /etc/my.cnf
+
+/etc/my.cnの[mysqld]へ以下を追加
+
+datadir = /usr/local/var/mysql
+
+# DB初期化
+cd /usr/local/mysql
+bin/mysql_install_db --basedir=/usr/local/mysql --datadir=/usr/local/var/mysql --user=mysql
+
+
+
+
+
+CHECK TABLE columns_priv;
+CHECK TABLE db;
+CHECK TABLE func;
+CHECK TABLE help_category;
+CHECK TABLE help_keyword;
+CHECK TABLE help_relation;
+CHECK TABLE help_topic;
+CHECK TABLE host;
+CHECK TABLE proc;
+CHECK TABLE procs_priv;
+CHECK TABLE tables_priv;
+CHECK TABLE time_zone;
+CHECK TABLE time_zone_leap_second;
+CHECK TABLE time_zone_name;
+CHECK TABLE time_zone_transition;
+CHECK TABLE time_zone_transition_type;
+CHECK TABLE user;
+
+REPAIR TABLE columns_priv;
+REPAIR TABLE db;
+REPAIR TABLE func;
+REPAIR TABLE help_category;
+REPAIR TABLE help_keyword;
+REPAIR TABLE help_relation;
+REPAIR TABLE help_topic;
+REPAIR TABLE host;
+REPAIR TABLE proc;
+REPAIR TABLE procs_priv;
+REPAIR TABLE tables_priv;
+REPAIR TABLE time_zone;
+REPAIR TABLE time_zone_leap_second;
+REPAIR TABLE time_zone_name;
+REPAIR TABLE time_zone_transition;
+REPAIR TABLE time_zone_transition_type;
+REPAIR TABLE user;
+
+
+
+CHECK TABLE CHARACTER_SETS;
+CHECK TABLE COLLATIONS;
+CHECK TABLE COLLATION_CHARACTER_SET_APPLICABILITY;
+CHECK TABLE COLUMNS;
+CHECK TABLE COLUMN_PRIVILEGES;
+CHECK TABLE KEY_COLUMN_USAGE;
+CHECK TABLE ROUTINES;
+CHECK TABLE SCHEMATA;
+CHECK TABLE SCHEMA_PRIVILEGES;
+CHECK TABLE STATISTICS;
+CHECK TABLE TABLES;
+CHECK TABLE TABLE_CONSTRAINTS;
+CHECK TABLE TABLE_PRIVILEGES;
+CHECK TABLE TRIGGERS;
+CHECK TABLE USER_PRIVILEGES;
+CHECK TABLE VIEWS;
+
+REPAIR TABLE CHARACTER_SETS;
+REPAIR TABLE COLLATIONS;
+REPAIR TABLE COLLATION_CHARACTER_SET_APPLICABILITY;
+REPAIR TABLE COLUMNS;
+REPAIR TABLE COLUMN_PRIVILEGES;
+REPAIR TABLE KEY_COLUMN_USAGE;
+REPAIR TABLE ROUTINES;
+REPAIR TABLE SCHEMATA;
+REPAIR TABLE SCHEMA_PRIVILEGES;
+REPAIR TABLE STATISTICS;
+REPAIR TABLE TABLES;
+REPAIR TABLE TABLE_CONSTRAINTS;
+REPAIR TABLE TABLE_PRIVILEGES;
+REPAIR TABLE TRIGGERS;
+REPAIR TABLE USER_PRIVILEGES;
+REPAIR TABLE VIEWS;

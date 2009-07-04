@@ -1,0 +1,34 @@
+cd ~/source
+
+setenv GIT_VER 1.6.3.2
+
+wget http://kernel.org/pub/software/scm/git/git-${GIT_VER}.tar.bz2
+
+tar xjf git-${GIT_VER}.tar.bz2
+
+cd git-${GIT_VER}
+
+
+vi http.h
+
+# 以下をコメントアウト
+
+-----------------------------------------------------------
+#if LIBCURL_VERSION_NUM >= 0x071000
+...
+#endif
+-----------------------------------------------------------
+
+./configure --with-openssl --with-curl --with-expat --with-perl --prefix=/usr/local/git-${GIT_VER}
+
+make
+sudo make install
+
+
+cd /usr/local
+sudo rm git
+sudo ln -s git-${GIT_VER} git
+
+
+# perl の SVNパッケージを入れておかないと
+# git svnが使えない

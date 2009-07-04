@@ -1,0 +1,1 @@
+ssh-keygen -i -f hoge.pub >> .ssh/authorized_keys

@@ -1,0 +1,38 @@
+# gemをインストールするユーザになる
+gem install passenger
+
+exit
+
+sudo su root
+passenger-install-apache2-module
+
+   
+   
+   PassengerRuby /usr/local/ruby/bin/ruby
+
+cd /etc/apache2/mods-available
+echo LoadModule passenger_module /usr/local/rubygems/gems/passenger-2.2.2/ext/apache2/mod_passenger.so > passenger.load
+echo SetEnv GEM_HOME /usr/local/rubygems-1.3.2 >> passenger.load
+echo SetEnv RUBYLIB /usr/local/rubygems-1.3.2/lib >> passenger.load
+echo PassengerRoot /usr/local/rubygems/gems/passenger-2.2.2 >> passenger.load
+echo PassengerRuby /usr/local/ruby/bin/ruby >> passenger.load
+
+
+echo PassengerUserSwitching off > passenger.conf
+echo PassengerDefaultUser nobody2 >> passenger.conf
+echo RailsAutoDetect off >> passenger.conf
+echo # 5 hours >> passenger.conf
+echo RailsFrameworkSpawnerIdleTime 18000 >> passenger.conf
+echo >> passenger.conf
+echo # 2 hours >> passenger.conf
+echo RailsAppSpawnerIdleTime 7200 >> passenger.conf
+
+
+cd /etc/apache2/mods-enabled
+
+a2enmod passenger
+
+
+/etc/init.d/apache2 stop
+/etc/init.d/apache2 start
+
