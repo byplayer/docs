@@ -5,10 +5,66 @@ echo '* ident' >> ./.git/info/attributes
 git check-attr ident hoge
 
 
-完全に個人的な趣味です。任意のディレクトリに .gitattributes、または $GIT_DIR/info/attributes を作成し、以下の内容を記述します。前者であれば git add することで、pull されたリポジトリにも影響を与えることができます。ただし、$Id$ の置き換わるタイミングは checkout をしたときなどに限られます。
+完全に個人的な趣味です。任意のディレクトリに .gitattributes、または $GIT_DIR/info/attributes
+を作成し、以下の内容を記述します。前者であれば git add することで、pull されたリポジトリにも
+影響を与えることができます。ただし、$Id$ の置き
+換わるタイミングは checkout をしたときなどに限られます。
 
 = git svn
 == 始めるとき
+project/trunk/, project/branches/name/, project/tags/name/といった構成になっているときは、cloneするときに-sオプションを指定するとよいかんじです。
 
-git svn clone http://hogehoge/svn
+$ git svn clone http://svn.coderepos.org/share/lang/perl/HTTP-Engine/ -s
+
+標準じゃない構成のときは-T, -b, -tオプションで指定します。
+
+例えば、plaggerみたいなtrunkだけproject/trunk/projectみたいな構成になっているやつの場合、
+
+git svn clone http://svn.bulknews.net/repos/plagger -T trunk/plagger -b branches -t tags
+
+
+非常にcloneに時間がかかるので-rオプションでリビジョンを指定して途中から取得することもできるようです。
+
+$ git svn clone http://svn.bulknews.net/repos/plagger -T trunk/plagger -b branches -t tags -r 2000
+$ git svn fetch # r2000以降を取得する
+
+
+
+== masterをtrunkにする
+cloneした段階では、自動的にすべてのコミットがmasterに入っていて、git svn infoしてみると、HEADのurlがtagsのところになっていたりすることがあります。このままdcommitしてしまうとtagsにコミットしてしまうので注意が必要です。
+
+そこで、次のようにしてtrunkのコミットだけにします。
+
+$ git reset --hard remotes/trunk
+
+あるいは、
+
+$ git co trunk -b ltrunk --track
+
+のようにしてmasterはつかわず、trunkに変更を加えるときはltrunkを起点として使うようにするというのもよいかなと思います。後者の方法はtrunkだけじゃなくbranchなどに変更を加えるときにも使います。名前はtrunkでもよいのですがリモートブランチとローカルブランチの名前がかぶるとやや面倒なのでlをつけてます。
+
+== 最新情報に更新する
+全branchなどの更新情報も取得するためにgit svn fetchを使うのがよさそうです。git svn fetchだけだと手元のファイルは更新されないので、作業前に、git svn rebaseして手元のbranchを更新します。
+
+git pullを使うこともできるのですが、手元のみで加えたcommitがある場合rebaseされてないとリモートのリポジトリと手元のリポジトリの履歴の順番が違うのでdcommitしにくくなるそうです。branch間のmergeをする際もgit mergeでやるのではなくて、なるべくgit rebaseを使った方がよさそうです。git pull --rebaseとgit svn rebaseがどう違うのかはよく調べてません。
+
+
+== 注意すること
+gitはファイルの移動やコピーなどはコミットの情報に含まれてはいないので、git svnでsvnのリポジトリに戻す際はその履歴がsvn側では追えなくなります。( ただし、gitからだと、Hash値を比べてそれっぽい変更を調べることができるはず。SEE ALSO [git-diff -M -C] )
+
+
+== まとめ
+色々と制限もあり、普段とは違ったコマンドを使わないといけないのがちょっと残念な気もしつつも、今のところ使い勝手はそれほど悪くないです。
+
+git whatchanged -pとかで最近の変更を追っ掛けられるのはsvn log -vを使うのに比べると(主に速くて)だいぶ良いなと思います。
+
+= gitにリモートを追加
+== 
+local% mkdir private-repo
+local% cd private-repo
+local% git init
+local% git remote add origin ssh://git@remote-name.com/private/keiji.git
+local% echo 'This git repository is private.' > README
+local% git commit -a -m 
+
 
