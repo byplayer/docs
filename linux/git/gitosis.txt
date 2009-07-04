@@ -1,11 +1,11 @@
 local% ssh keiji@remote-name.com
 remote% sudo aptitude install git git-core
-remote% sudo aptitude python python-setuptools # gitosis ‚Í python ‚Å‘‚©‚ê‚Ä‚é‚½‚ß•K—v‚É‰‚¶‚ÄƒCƒ“ƒXƒg[ƒ‹‚·‚éB
+remote% sudo aptitude python python-setuptools # gitosis ã¯ python ã§æ›¸ã‹ã‚Œã¦ã‚‹ãŸã‚å¿…è¦ã«å¿œã˜ã¦ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã™ã‚‹ã€‚
 remote% mkdir ~/src
 remote% cd ~/src
 remote% git clone git://eagain.net/gitosis.git
 remote% cd gitosis
-remote% sudo python setup.py install # gitosis ‚ğƒVƒXƒeƒ€‚ÉƒCƒ“ƒXƒg[ƒ‹‚·‚éB
+remote% sudo python setup.py install # gitosis ã‚’ã‚·ã‚¹ãƒ†ãƒ ã«ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã™ã‚‹ã€‚
 
 # create git user
 remote% sudo adduser \
@@ -18,15 +18,15 @@ remote% sudo adduser \
 git
 
 
-# ©•ª‚ÌŒöŠJŒ®‚ğƒT[ƒo‚É“]‘—
+# è‡ªåˆ†ã®å…¬é–‹éµã‚’ã‚µãƒ¼ãƒã«è»¢é€
 local% % scp ~/.ssh/id_rsa.pub keiji@remote-name.com:/home/keiji 
 
-# gitosis-init ‚ğ—p‚¢‚Äæ’ö“]‘—‚µ‚Ä‚«‚½Œ®‚ğ“o˜^Bã‚Åì‚Á‚½ƒ†[ƒU(git)‚ÅÀs
+# gitosis-init ã‚’ç”¨ã„ã¦å…ˆç¨‹è»¢é€ã—ã¦ããŸéµã‚’ç™»éŒ²ã€‚ä¸Šã§ä½œã£ãŸãƒ¦ãƒ¼ã‚¶(git)ã§å®Ÿè¡Œ
 % sudo -H -u git gitosis-init < /home/yukio/key.pub 
 Initialized empty Git repository in ./
 Initialized empty Git repository in ./
 
-# git ƒ†[ƒU‚Ìƒz[ƒ€ƒfƒBƒŒƒNƒgƒŠ‚É gitosis ‚Æ repositories ‚Æ‚¢‚¤“ñ‚Â‚ÌƒfƒBƒŒƒNƒgƒŠ‚ªì‚ç‚ê‚Ä‚é
+# git ãƒ¦ãƒ¼ã‚¶ã®ãƒ›ãƒ¼ãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã« gitosis ã¨ repositories ã¨ã„ã†äºŒã¤ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒä½œã‚‰ã‚Œã¦ã‚‹
 % sudo ls /home/git 
 gitosis  repositories
 
