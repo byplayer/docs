@@ -1,0 +1,12 @@
+require 'rake'
+require 'rake/rdoctask'
+
+Rake::RDocTask.new("doc") { |rdoc|
+  rdoc.rdoc_dir = 'doc'
+  rdoc.title = "git documents"
+  rdoc.options << '-c UTF-8'
+  # rdoc.rdoc_files.include('lib/**/*.rb')
+  rdoc.rdoc_files.include('*.txt')
+}
+
+task :default => :doc
