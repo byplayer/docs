@@ -68,3 +68,9 @@ local% echo 'This git repository is private.' > README
 local% git commit -a -m 
 
 
+
+= 前の状態の戻す
+git checkout
+
+ファイルもしていできる
+git checkout hogehoge.txt
