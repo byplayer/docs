@@ -1,12 +1,17 @@
 cd ~/source
 
-setenv GIT_VER 1.6.3.2
+setenv GIT_VER 1.6.3.3
 
 wget http://kernel.org/pub/software/scm/git/git-${GIT_VER}.tar.bz2
 
 tar xjf git-${GIT_VER}.tar.bz2
 
 cd git-${GIT_VER}
+
+
+
+
+./configure --with-openssl --with-curl --with-expat --with-perl --prefix=/usr/local/git-${GIT_VER}
 
 
 vi http.h
@@ -19,10 +24,10 @@ vi http.h
 #endif
 -----------------------------------------------------------
 
-./configure --with-openssl --with-curl --with-expat --with-perl --prefix=/usr/local/git-${GIT_VER}
-
 make
+make man
 sudo make install
+sudo make install-man
 
 
 cd /usr/local
