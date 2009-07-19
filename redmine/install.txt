@@ -219,3 +219,11 @@ usermod -G git nobody2
 GIT_BIN を "/usr/local/bin/git" に変更する。
 
 gitは、--bareでかつ、ローカルでないと駄目らしい
+
+
+= (2) SVGの日本語が文字化けしていたら
+
+redmine/lib/SVG/Graph/Graph.rbを下記のように修正する。 
+
+・「font-weight: bold;」→「font-weight: normal;」 
+・「font-family: "Verdana", sans-serif; 」→「font-family: HGGothicM , Verdana, sans-serif; 」 
