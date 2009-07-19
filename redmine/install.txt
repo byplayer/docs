@@ -1,0 +1,63 @@
+= MySQLユーザ準備
+== ユーザ作成
+ # パスワードはダミー適切に書き換えて使ってください
+
+ GRANT SELECT,INSERT,DELETE,UPDATE,CREATE,DROP,ALTER,INDEX
+ ON redmine.* to redmine@'localhost' IDENTIFIED BY 'r_01' WITH GRANT OPTION;
+ 
+ GRANT SELECT,INSERT,DELETE,UPDATE,CREATE,DROP,ALTER,INDEX
+ ON rdev.* to rdev@'localhost' IDENTIFIED BY 'rdev_01' WITH GRANT OPTION;
+ 
+ GRANT SELECT,INSERT,DELETE,UPDATE,CREATE,DROP,ALTER,INDEX
+ ON rtest.* to rtest@'localhost' IDENTIFIED BY 'rtest_01' WITH GRANT OPTION;
+ 
+ FLUSH PRIVILEGES;
+ 
+== おまけ（ユーザ削除)
+
+use mysql;
+
+DELETE FROM user WHERE User = 'redmine';
+DELETE FROM user WHERE User = 'rdev';
+DELETE FROM user WHERE User = 'rtest';
+
+== DB作成
+CREATE DATABASE redmine CHARACTER SET utf8;
+
+CREATE DATABASE rdev CHARACTER SET utf8;
+
+CREATE DATABASE rtest CHARACTER SET utf8;
+
+= redmineソース取得
+
+・redmineソースを取ってくる
+
+rsync -avC --delete --exclude .git ./ /usr/local/ems/redmine/
+diff -r -x .git ./ /usr/local/ems/redmine/
+
+cd /usr/local/ems/redmine/
+chmod g+w log
+
+mkdir tmp
+chmod g+w tmp
+
+mkdir files
+chmod g+w files
+
+cd public
+chmod g+w plugin_assets
+
+cd config
+database.ymlを編集
+
+= テーブル作成
+cd ${RAILS_ROOT}
+rake db:migrate RAILS_ENV="production"
+
+rake redmine:load_default_data RAILS_ENV="production"
+
+
+
+= Apache周りの設定
+以下を参考にどうぞ
+http://redmine.jp/tech_note/apache-passenger/
