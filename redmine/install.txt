@@ -66,3 +66,156 @@ http://redmine.jp/tech_note/apache-passenger/
 */5 * * * * cd /usr/local/ems/redmine && ./tools/fetch_changesets.sh >> /var/log/redmine/fetch_changesets_cmd.log 2>&1
 
 ５分に１回だとおそいけどなぁ。。。
+
+
+2009/02/25
+APC (Alternative PHP Cache) の管理画面
+ 
+APC にはこんな管理画面がついてくる。
+キャッシュの利用状況の確認、キャッシュのクリアなどできる。
+
+
+
+
+
+
+CentOS5 で pecl からインストールした場合は、/usr/share/pear/apc.php にインストールされていた。/var/www/html の下の適当な場所からシンボリックリンクを張ってアクセスできるようにした。
+
+
+
+デフォルトではパスワードを指定する必要があるので、apc.php 冒頭の以下の部分を変更する。パスワードが "password" のままではログインできないので注意。
+
+
+
+defaults('ADMIN_USERNAME','apc');                       // Admin Username
+defaults('ADMIN_PASSWORD','password');
+投稿者 takah 時刻: 00:12 0 コメント この投稿へのリンク  
+2009/02/24
+APCをインストールした
+ 
+PHP をバイナリでキャッシュする APC (Alternative PHP Cache) をインストールした。
+
+
+1.APC をインストールする。
+
+# pecl install apc
+2./etc/php.ini に apc の設定を追加する。
+
+[apc]
+extension=apc.so
+3.Apache を再起動する。
+
+# service httpd graceful
+4.phpinfo() を実行して APC Support が enabled になっていれば成功。
+
+# cat test.php
+<?php
+phpinfo();
+?>
+
+
+
+
+
+失敗するときは
+•php-devel が無い場合のエラー。php-devel をインストールする。
+
+# pecl install apc
+downloading APC-3.0.19.tgz ...
+Starting to download APC-3.0.19.tgz (115,735 bytes)
+.........................done: 115,735 bytes
+47 source files, building
+running: phpize
+sh: phpize: command not found
+ERROR: `phpize' failed
+
+# yum install php-devel
+投稿者 takah 時刻: 00:44 0 コメント この投稿へのリンク  
+2009/02/20
+EC-CUBE は PostgreSQL で使うべき？ - MySQL での稼働失敗
+ 
+日本製のオープンソースECソフト、EC-CUBE 2.3.3 を MySQL で使おうとしたけれど、配送設定で複数の配送時間を登録しようとするとエラーが起きてログイン画面に遷移してしまう。PostgreSQL に変えてみてからは、問題は起きていない。
+
+
+
+EC-CUBE はもともと Postgres用らしく、開発者も Postgres を使っているとのこと。なので、PostgreSQL を使える環境なら、迷わず Postgres にした方がよさそう。MySQL でも何となく動いてはいたけど、配送時間の登録ごときでシステムエラーになってしまうようでは、先が思いやられる。フォーラムの書き込みなどを見ると、速度も Postgres を使う方が速いらしい。
+
+
+
+ちなみに、配送時間の登録で出たエラーはこれ。(data/logs/site.log)
+
+
+
+INSERT INTO dtb_delivtime(deliv_time,deliv_id,time_id) VALUES ('18:00 ～ 0:00','3',15) [nativecode=1062 ** Duplicate entry '15' for key 1]
+
+
+dtb_delivtime とはどんなテーブルだろう？
+
+
+
+mysql> desc dtb_delivtime;
++------------+---------+------+-----+---------+----------------+
+| Field      | Type    | Null | Key | Default | Extra          |
++------------+---------+------+-----+---------+----------------+
+| deliv_id   | int(11) | NO   |     |         |                | 
+| time_id    | int(11) | NO   | PRI | NULL    | auto_increment | 
+| deliv_time | text    | NO   |     |         |                | 
++------------+---------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+
+time_id は primary key だ。なぜ主キーが重複する。。。
+
+
+
+この問題を解決しようと努力するよりも、Postgres に移行した方が賢い選択だと考えて、MySQL で動かすのはあきらめた。レンタルサーバだと MySQL しか用意されていなくて、PostgreSQL を選べないことも多いので、ちょっと不便かも。
+
+投稿者 takah 時刻: 23:22 0 コメント この投稿へのリンク  
+2009/02/14
+Redmine 日本語対応
+ 
+Redmine 0.8 でガントチャートを PDF出力、PNG出力することができるが、日本語が出ていなかったのでググって対応した。
+
+
+
+PDF の日本語対応
+
+
+lang/ja.yml で指定されている PDF のエンコーディングを変更する。
+
+
+
+•変更前
+
+general_csv_encoding: SJIS
+general_pdf_encoding: UTF-8
+•変更後
+
+general_csv_encoding: SJIS
+general_pdf_encoding: SJIS
+
+
+PNG の日本語対応
+
+
+1.Windows から msgothic.ttc を /usr/share/fonts/default/TrueType にコピー。
+2.Redmine の lib/redmine/helpers/gantt.rb の 89行目付近にコードを追加する。
+(gc.font と gc.pointsize の行)
+gc = Magick::Draw.new
+gc.font = '/usr/share/fonts/default/TrueType/msgothic.ttc'
+gc.pointsize = 12
+
+
+= gitosisを使っている場合
+プロセス実行ユーザをgitグループへ加える
+
+usermod -G git nobody2
+
+= gitを変なパスに入れている場合は
+/usr/local/bin/git にインストールされるので
+
+{REDMINE_ROOT}/lib/redmine/scm/adapters/git_adapter.rb の
+
+GIT_BIN を "/usr/local/bin/git" に変更する。
+
+gitは、--bareでかつ、ローカルでないと駄目らしい
