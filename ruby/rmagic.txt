@@ -1,0 +1,32 @@
+= 必要なライブラリインストール
+Debian 4系だと古いImageMagickのライブラリしかないので、手で入れる
+
+setenv IM_VER 6.5.4-3
+
+cd /usr/local/src
+wget ftp://ftp.kddlabs.co.jp/graphics/ImageMagick/ImageMagick-${IM_VER}.tar.bz2
+
+tar xjf ImageMagick-${IM_VER}.tar.bz2
+
+cd ImageMagick-${IM_VER}
+
+
+./configure --prefix=/usr/local/ImageMagick-${IM_VER} --disable-static --enable-shared --with-modules --without-perl --without-magick-plus-plus --with-quantum-depth=32
+
+
+make
+
+sudo make install
+cd /usr/local/
+
+sudo ln -s ImageMagick-${IM_VER} ImageMagick
+
+
+
+= rmagick インストール
+set path=(/usr/local/ImageMagick/bin $path)
+
+gem install rmagick
+
+
+export LD_LIBRARY_PATH=/usr/local/ImageMagick/lib

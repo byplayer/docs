@@ -1,0 +1,52 @@
+= 自前の gem の作り方
+自前の gem をこしらえるのは簡単だ。まず、どうしたいか（tar ボールと zip ファイルのどちらでリリースするかといったこと）をお膳立てする。良い例を思いついた:
+
+ - some_cool_lib
+   - lib
+     - cool.rb
+   - test
+     - cool_tc.rb
+   - README
+   - ChangeLog
+
+このライブラリは単純でファイル数も多いといえないが、gem がどう動くのか・どんなものかを伝えるのには充分だろう。こいつらを gem にするには gem スペックを作成すればよい。この場合、some_cool_lib.gemspec というような名前でファイルを作り、中身はこういう風に書く：
+
+ Gem::Specification.new do |spec|
+   spec.name = "some_cool_lib"
+   spec.version = "0.0.1"
+   spec.summary = "土曜の午後に書いたステキな小さいライブラリ"
+   spec.author = "Chad Fowler"
+   spec.email = "chad+spam@chadfowler.com"
+   spec.homepage = "http://www.chadfowler.com"
+   spec.autorequire = "cool"
+   spec.files = Dir.glob("{test,lib}/**/*") << "README" << "ChangeLog"
+   spec.test_files = ["test/cool_tc.rb"]
+   spec.has_rdoc = true
+   spec.rdoc_options << "--main" << "README"
+   spec.extra_rdoc_files = ["README"]
+ end  
+gemspec を作ったなら、こんな簡単なコマンドで gem を作ることができる：
+
+ $ gem build some_cool_lib.gemspec
+ Attempting to build gem spec 'some_cool_lib.gemspec'
+   Successfully built RubyGem
+   Name: some_cool_lib
+   Version: 0.0.1
+   File: some_cool_lib-0.0.1.gem          
+バラバラに*1 gem スペックファイルを保守するよりも、Rake を使って gem パッケージを作る方が良い。 Rake は RubyGems をビルドとリリース工程に途切れなく取り込む。
+
+gem スペックファイルを用いても、Rake を用いても、これで配布できる gem をつくることができた。じゃ、インストールしてみよう。
+
+ぎゃっ！インストール時に "--test" 引数を指定したので、gem に失敗するテストがあるのがわかった！コードを修正して gem をリビルドすれば、インストールはうまくいく。
+
+ $ gem install some_cool_lib-0.0.1.gem --test
+ Attempting local installation of 'some_cool_lib-0.0.1.gem'
+ Successfully installed some_cool_lib, version 0.0.1
+ Installing RDoc documentation for some_cool_lib-0.0.1...  
+最後の行は RubyGems が RDoc ドキュメントを生成したことを示している。どうやって見つけるのかって？それはファイルシステムのどっかに隠れている。 UNIXユーザー向けには、こういう難しいやり方がある：
+
+ $ ls `gem env gemdir`/doc/some_cool_lib-0.0.1/rdoc
+ classes                 fr_class_index.html     index.html
+ created.rid             fr_file_index.html      rdoc-style.css
+ files                   fr_method_index.html
+
