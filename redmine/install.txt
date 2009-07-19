@@ -61,3 +61,8 @@ rake redmine:load_default_data RAILS_ENV="production"
 = Apache周りの設定
 以下を参考にどうぞ
 http://redmine.jp/tech_note/apache-passenger/
+
+= fetch_changesets
+*/5 * * * * cd /usr/local/ems/redmine && ./tools/fetch_changesets.sh >> /var/log/redmine/fetch_changesets_cmd.log 2>&1
+
+５分に１回だとおそいけどなぁ。。。
