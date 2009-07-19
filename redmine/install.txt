@@ -1,6 +1,6 @@
-= MySQL���[�U����
-== ���[�U�쐬
- # �p�X���[�h�̓_�~�[�K�؂ɏ��������Ďg���Ă�������
+= MySQLユーザ準備
+== ユーザ作成
+ # パスワードはダミー適切に書き換えて使ってください
 
  GRANT SELECT,INSERT,DELETE,UPDATE,CREATE,DROP,ALTER,INDEX
  ON redmine.* to redmine@'localhost' IDENTIFIED BY 'r_01' WITH GRANT OPTION;
@@ -13,7 +13,7 @@
  
  FLUSH PRIVILEGES;
  
-== ���܂��i���[�U�폜)
+== おまけ（ユーザ削除)
 
 use mysql;
 
@@ -21,16 +21,16 @@ DELETE FROM user WHERE User = 'redmine';
 DELETE FROM user WHERE User = 'rdev';
 DELETE FROM user WHERE User = 'rtest';
 
-== DB�쐬
+== DB作成
 CREATE DATABASE redmine CHARACTER SET utf8;
 
 CREATE DATABASE rdev CHARACTER SET utf8;
 
 CREATE DATABASE rtest CHARACTER SET utf8;
 
-= redmine�\�[�X�擾
+= redmineソース取得
 
-�Eredmine�\�[�X������Ă���
+・redmineソースを取ってくる
 
 rsync -avC --delete --exclude .git ./ /usr/local/ems/redmine/
 diff -r -x .git ./ /usr/local/ems/redmine/
@@ -48,9 +48,9 @@ cd public
 chmod g+w plugin_assets
 
 cd config
-database.yml��ҏW
+database.ymlを編集
 
-= �e�[�u���쐬
+= テーブル作成
 cd ${RAILS_ROOT}
 rake db:migrate RAILS_ENV="production"
 
@@ -58,11 +58,11 @@ rake redmine:load_default_data RAILS_ENV="production"
 
 
 
-= Apache����̐ݒ�
-�ȉ����Q�l�ɂǂ���
+= Apache周りの設定
+以下を参考にどうぞ
 http://redmine.jp/tech_note/apache-passenger/
 
 = fetch_changesets
 */5 * * * * cd /usr/local/ems/redmine && ./tools/fetch_changesets.sh >> /var/log/redmine/fetch_changesets_cmd.log 2>&1
 
-�T���ɂP�񂾂Ƃ��������ǂȂ��B�B�B
+５分に１回だとおそいけどなぁ。。。
