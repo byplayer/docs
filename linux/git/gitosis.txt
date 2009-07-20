@@ -44,3 +44,7 @@ local% git clone git@127.0.0.1:gitosis-admin.git # or ssh://git@remote-name/gito
 
 git clone git@emaki.minidns.net:gitosis-admin.git
 
+
+= 初回push
+git remote add origin ssh://git@remote-name.com/private/keiji.git
+git push origin master
