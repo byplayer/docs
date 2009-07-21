@@ -1,0 +1,14 @@
+= rspecをプラグインとして入れる　for Rails >= 2.1.0
+ruby script/plugin install git://github.com/dchelimsky/rspec.git -r 'refs/tags/1.2.7'
+ruby script/plugin install git://github.com/dchelimsky/rspec-rails.git -r 'refs/tags/1.2.7.1'
+ruby script/generate rspec
+
+
+= emailアドレスチェック
+validates_email_format_of
+Railsify! > Plugins > validates_email_format_of
+
+単純に正規表現によるフォーマットチェックでバリデーションを行うプラグイン。
+
+インストール
+ruby script/plugin install http://code.dunae.ca/validates_email_for
