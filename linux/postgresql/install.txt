@@ -1,0 +1,48 @@
+setenv PG_VERSION 8.4.0
+
+sudo su maint
+
+cd /usr/local/src
+
+wget http://www.ring.gr.jp/pub/misc/db/postgresql/source/v${PG_VERSION}/postgresql-${PG_VERSION}.tar.gz
+
+tar xzf postgresql-${PG_VERSION}.tar.gz
+
+cd postgresql-${PG_VERSION}
+
+./configure --prefix=/usr/local/postgresql-${PG_VERSION}
+make
+
+su
+make install
+
+cd /usr/local
+ln -s postgresql-8.4.0 postgresql
+
+
+adduser postgres
+
+mkdir -p /usr/local/pgsql/data
+
+chown postgres /usr/local/pgsql/data
+
+su - postgres
+
+/usr/local/postgresql/bin/initdb -D /usr/local/pgsql/data
+
+sudo su root
+
+cd /usr/local/src/postgresql-${PG_VERSION}
+
+cp contrib/start-scripts/linux /etc/init.d/postgres
+chmod 755 /etc/init.d/postgres
+
+cd /etc/init.d/
+update-rc.d postgres defaults 90
+
+/etc/init.d/postgres start
+
+-----------------------------------------------------------
+pgsql -upostgres
+
+alter user postgres with password 'xxxx';

@@ -1,0 +1,6 @@
+setenv PG_HOME /usr/local/postgresql
+
+
+${PG_HOME}/bin/createuser -A -d -E -P user
+
+createdb -Uredmine -E utf8 redmine
