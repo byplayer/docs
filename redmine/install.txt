@@ -210,6 +210,7 @@ gc.pointsize = 12
 プロセス実行ユーザをgitグループへ加える
 
 usermod -G git nobody2
+usermod -G git webuser
 
 = gitを変なパスに入れている場合は
 /usr/local/bin/git にインストールされるので
