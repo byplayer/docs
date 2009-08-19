@@ -1,0 +1,5 @@
+C-c ,v : rspec-verify
+C-c ,s : rspec-verify-single
+C-c ,a : rspec-verify-all
+C-c ,d : rspec-toggle-example-pendingness
+C-c ,t : rspec-toggle-spec-and-target
