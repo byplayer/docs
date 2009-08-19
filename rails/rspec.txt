@@ -1,0 +1,1 @@
+ruby script/genarate rspec_model blog
