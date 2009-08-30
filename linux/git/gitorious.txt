@@ -1,0 +1,47 @@
+cd ~home/projects
+git clone git://gitorious.org/gitorious/mainline.git
+
+mv mainline gitorious
+
+cd /usr/local/ems
+sudo mkdir gitorious
+sudo chown root:ems gitorious
+sudo chmod g+w gitorious
+
+cd ~home/projects/gitorious
+rsync -av --exclude .git ./ /usr/local/ems/gitorious/
+
+# DB user
+/usr/local/postgresql/bin/createuser -h127.0.0.1 -Upostgres -d -E -R -S -P gitorious
+
+/usr/local/postgresql/bin/createdb -h127.0.0.1 -Ugitorious -Eutf8 -W gitorious
+
+# DB test
+/usr/local/postgresql/bin/psql -Ugitorious -W -h127.0.0.1 -dgitorious
+
+sudo su webuser
+tcsh
+souce ~yukio/.tcshrc
+
+cd /usr/local/ems/gitorious/config
+cp database.sample.yml database.yml
+vi database.yml
+
+cp gitorious.sample.yml gitorious.yml
+vi gitorious.yml
+
+cd /usr/local/var
+sudo mkdir -p gitorious/repos
+sudo chown git:git gitorious/repos
+
+sudo mkdir -p gitorious/tarballs-cache
+sudo chown maint:ems gitorious/tarballs-cache
+sudo chmod g+w gitorious/tarballs-cache
+
+sudo mkdir -p gitorious/tarballs-work
+sudo chown maint:ems gitorious/tarballs-work
+sudo chmod g+w gitorious/tarballs-work
+
+
+ls -l gitorious/
+
