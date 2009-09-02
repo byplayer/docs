@@ -1,2 +1,7 @@
-$ git config --global user.name "Your Name Comes Here"
-$ git config --global user.email you@yourdomain.example.com
+git config --global user.name "Your Name Comes Here"
+git config --global user.email you@yourdomain.example.com
+
+git config --global color.branch always
+git config --global color.diff always
+git config --global color.interactive always
+git config --global color.status always
