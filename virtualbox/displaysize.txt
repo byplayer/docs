@@ -1,0 +1,27 @@
+windowsがホスト、Debianがゲストの場合のDebian
+側の解像度の変え方。
+
+Virtualbox起動後、Virtualboxのメニュー
+デバイス -> Guest Additionsのインストール
+を選択
+
+Guest AddtionsのCDイメージがマウントされるので
+ゲストOSに該当している
+VBoxLinuxAdditions-x86.run
+などを実行する
+
+ただし、以下のパッケージがインストールされている必要がある
+
+
+GNU make、Linux kernelのヘッダー、GNU compiler
+また
+OpenGLダイレクトレンダリングを実行するにはカーネルが2.6.27以上である必要がある。
+
+というわけでインストールします。
+
+apt-get install make linux-headers-2.6-686 g++
+
+再度Guest Additionsのインストールを実行
+
+   1. # cd /cdrom
+   2. # sh VBoxLinuxAdditions-x86.run
