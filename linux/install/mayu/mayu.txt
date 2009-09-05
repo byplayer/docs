@@ -1,0 +1,18 @@
+= 窓使いの憂鬱 Linux版のインストール
+
+== boost 1.33 >=を入れておく
+ sudo aptitude install libboost-dev libboost-dbg libboost-doc
+
+ sudo su maint
+
+ export MAYU_VER=0.11
+ cd /usr/src
+ wget http://members.at.infoseek.co.jp/hattoushin_uma/cgi-bin/download/download.cgi/mayu-${MAYU_VER}.tar.gz
+ tar xzf mayu-${MAYU_VER}.tar.gz
+ cd mayu-${MAYU_VER}/
+ ./configure --prefix=/usr/local/mayu-${MAYU_VER}
+ make
+ sudo make install
+ pushd /usr/local
+ sudo ln -s mayu-0.11 mayu
+ popd
