@@ -1,0 +1,29 @@
+# 基本設定読み込み
+include "109.mayu"
+include "104on109.mayu"
+
+keymap Global
+  # Caps Lockを英数に
+  # 通常は以下でよいが
+  # Vistaでymyu用にキーをいじっているので
+  # 細工が必要
+  # mod ctrl += !Eisuu
+
+  def key E0Eisuu = E0-0x3a
+  def subst *E0Eisuu = S-*Eisuu
+  mod ctrl += E0Eisuu
+
+  # HHKライクに
+  mod shift -= ReverseSolidus
+  mod mod0 = !ReverseSolidus
+
+  key *C-*S-M0-J      => *C-*S-Home
+  key *C-*S-M0-M      => *C-*S-End
+  key *C-*S-M0-P      => *C-*S-Up
+  key *C-*S-M0-L      => *C-*S-Left
+  # TODO: CTRL, SHIFT + 右矢印の挙動ができていない
+  key M0-Semicolon  => *C-*S-Right
+  key *C-*S-M0-FullStop => *C-*S-Down
+  key *C-*S-M0-K      => *C-*S-PageUp
+  key *C-*S-M0-Comma    => *C-*S-PageDown
+

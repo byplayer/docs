@@ -3,10 +3,11 @@
 == boost 1.33 >=を入れておく
  sudo aptitude install libboost-dev libboost-dbg libboost-doc
 
+== mayuのインストール
  sudo su maint
 
  export MAYU_VER=0.11
- cd /usr/src
+ cd /usr/local/src
  wget http://members.at.infoseek.co.jp/hattoushin_uma/cgi-bin/download/download.cgi/mayu-${MAYU_VER}.tar.gz
  tar xzf mayu-${MAYU_VER}.tar.gz
  cd mayu-${MAYU_VER}/
@@ -14,5 +15,38 @@
  make
  sudo make install
  pushd /usr/local
- sudo ln -s mayu-0.11 mayu
+ sudo ln -s mayu-${MAYU_VER} mayu
  popd
+
+== uinputがロードされるようにする
+uinput がロードされている必要があります。
+mayu を起動する前に、次のコマンドでモジュールのロードを行ってください。
+
+  # modprobe uinput             (root権限で実行)
+
+起動時に自動的にモジュールをロードさせるには、
+/etc/modules に
+
+uinput
+
+という一行を追記して、
+
+  # update-modules              (root権限で実行)
+
+を実行して下さい。
+
+== 起動スクリプトへ登録
+sudo cp mayu /etc/init.d/
+
+ls -l /etc/init.d/mayu
+
+  -> ファイルがあること
+     実行権限があることを確認する
+
+自動起動出きるように登録
+sudo update-rc.d mayu start 10 2 . stop 10 0 1 3 4 5 6 .
+
+あとはお好みで.mayuを登録
+
+sudo /etc/init.d/mayu loadtest
+
