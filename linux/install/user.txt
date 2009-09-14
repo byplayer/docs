@@ -1,5 +1,6 @@
 groupadd -g 10000 web
 
+
 useradd -s /bin/sh -u 10001 -g users -G staff maint
 useradd -s /bin/sh -u 10002 -g web webuser
 useradd -s /bin/sh -u 10003 -g users -G web batch

@@ -4,7 +4,7 @@
  sudo aptitude install libboost-dev libboost-dbg libboost-doc
 
 == mayuのインストール
- sudo su maint
+ sudo su root
 
  export MAYU_VER=0.11
  cd /usr/local/src
@@ -13,7 +13,7 @@
  cd mayu-${MAYU_VER}/
  ./configure --prefix=/usr/local/mayu-${MAYU_VER}
  make
- sudo make install
+ make install
  pushd /usr/local
  sudo ln -s mayu-${MAYU_VER} mayu
  popd
@@ -34,6 +34,7 @@ uinput
   # update-modules              (root権限で実行)
 
 を実行して下さい。
+もう古くなってるって言われるけど何を出せばよいか不明
 
 == 起動スクリプトへ登録
 sudo cp mayu /etc/init.d/
