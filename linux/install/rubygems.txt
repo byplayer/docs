@@ -1,50 +1,25 @@
-cd ~/source
+sudo su root
+cd /usr/local/src
 
-setenv RUBY_HOME /usr/local/ruby
-setenv GEM_VER 1.3.2
-set path=(${RUBY_HOME}/bin $path)
-setenv GEM_HOME /usr/local/rubygems-${GEM_VER}
+RUBY_HOME=/usr/local/ruby
+export PATH=${RUBY_HOME}/bin:$PATH
+
+GEM_VER=1.3.5
 
 # 確認
 which ruby
 ruby -v
 
-echo ${GEM_HOME}
+wget http://rubyforge.org/frs/download.php/60718/rubygems-${GEM_VER}.tgz
 
-
-wget http://rubyforge.org/frs/download.php/55066/rubygems-1.3.2.tgz
 
 
 tar xzf rubygems-${GEM_VER}.tgz
 cd rubygems-${GEM_VER}
 
-sudo su
 
-
-setenv RUBY_HOME /usr/local/ruby
-setenv GEM_VER 1.3.2
-set path=(${RUBY_HOME}/bin $path)
-setenv GEM_HOME /usr/local/rubygems-${GEM_VER}
-
-# 確認
-which ruby
-ruby -v
-
-echo ${GEM_HOME}
-
-
-ruby setup.rb --prefix=${GEM_HOME}
+ruby setup.rb
 
 
 
-
-set path=(${RUBY_HOME}/bin ${GEM_HOME}/bin $path)
-
-
-
-
-
-cd /usr/local
-rm rubygems
-ln -s rubygems-${GEM_VER} rubygems
 

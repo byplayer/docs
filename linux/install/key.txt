@@ -1,0 +1,2 @@
+keycode 133 = backslash  bar
+円マークを\にする
