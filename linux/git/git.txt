@@ -14,6 +14,7 @@ cd git-${GIT_VER}
 ./configure --with-openssl --with-curl --with-expat --with-perl --prefix=/usr/local/git-${GIT_VER}
 
 
+# debian 4の場合は
 vi http.h
 
 # 以下をコメントアウト
@@ -37,3 +38,6 @@ sudo ln -s git-${GIT_VER} git
 
 # perl の SVNパッケージを入れておかないと
 # git svnが使えない
+
+# manにpathを通す
+setenv MANPATH `manpath -q`:/usr/local/git/share/man
