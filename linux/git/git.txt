@@ -1,6 +1,14 @@
-cd ~/source
+-----------------------------------------------------------
+ 事前準備
+-----------------------------------------------------------
+aptitude install gettext tcl tk libsvn-perl asciidoc
 
-setenv GIT_VER 1.6.3.3
+-----------------------------------------------------------
+sudo su root
+
+cd /usr/local/src
+
+export GIT_VER=1.6.4.4
 
 wget http://kernel.org/pub/software/scm/git/git-${GIT_VER}.tar.bz2
 
@@ -27,8 +35,8 @@ vi http.h
 
 make
 make man
-sudo make install
-sudo make install-man
+make install
+make install-man
 
 
 cd /usr/local
@@ -39,5 +47,6 @@ sudo ln -s git-${GIT_VER} git
 # perl の SVNパッケージを入れておかないと
 # git svnが使えない
 
-# manにpathを通す
-setenv MANPATH `manpath -q`:/usr/local/git/share/man
+# git 環境設定
+export PATH=/usr/local/git/bin:$PATH
+export MANPATH=/usr/local/git/share/man:`manpath -q`

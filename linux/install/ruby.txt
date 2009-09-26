@@ -1,3 +1,9 @@
+-------------------------------------------------------------
+ 事前準備
+-------------------------------------------------------------
+aptitude install readline-dev zlib1g-dev
+
+-------------------------------------------------------------
 sudo su root
 
 cd /usr/local/src
@@ -18,7 +24,20 @@ make
 
 make install
 
+cd /usr/local
+rm ruby
+ln -s ruby-${RUBY_VER}-p${PATCH_LEV} ruby
+
+export RUBY_HOME=/usr/local/ruby
+
+
 export PATH=${RUBY_HOME}/bin:$PATH
+
+# 確認
+which ruby
+ruby --version
+
+cd /usr/local/src/ruby-${RUBY_VER}-p${PATCH_LEV}
 
 cd ext/zlib
 ruby extconf.rb
@@ -26,7 +45,4 @@ make
 make install
 
 
-cd /usr/local
-rm ruby
-ln -s ruby-${RUBY_VER}-p${PATCH_LEV} ruby
 
