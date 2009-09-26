@@ -1,0 +1,2 @@
+mkdir /mnt/hostfs
+mount -t vboxsf share /mnt/hostfs

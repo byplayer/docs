@@ -1,0 +1,35 @@
+sudo su root
+
+aptitude install apache2 apache2-mpm-worker \
+  apache2-threaded-dev apache2-utils \
+  apache2.2-common
+
+
+gem install passenger
+
+passenger-install-apache2-module
+
+------------------------------------------------------------
+ /etc/init.d/apache2
+------------------------------------------------------------
+ENV="env -i LANG=C PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/git/bin:/usr/local/ruby/bin"
+
+------------------------------------------------------------
+ /etc/apache2/mods-available/passenger.load
+------------------------------------------------------------
+LoadModule passenger_module /usr/local/ruby/lib/ruby/gems/1.8/gems/passenger-2.2.5/ext/apache2/mod_passenger.so
+
+------------------------------------------------------------
+ /etc/apache2/mods-available/passenger.conf
+------------------------------------------------------------
+PassengerRoot /usr/local/ruby/lib/ruby/gems/1.8/gems/passenger-2.2.5
+PassengerRuby /usr/local/ruby/bin/ruby
+
+RailsAutoDetect off
+
+
+------------------------------------------------------------
+cd /etc/apache2/mods-enabled
+
+ln -s ../mods-available/passenger.load passenger.load
+ln -s ../mods-available/passenger.conf passenger.conf

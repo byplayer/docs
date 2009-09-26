@@ -1,1 +1,5 @@
-ssh-keygen -i -f hoge.pub >> .ssh/authorized_keys
+# 鍵生成
+ssh-keygen -t dsa
+
+# 鍵登録
+ssh-keygen  -f hoge.pub >> .ssh/authorized_keys
