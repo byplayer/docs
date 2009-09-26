@@ -10,6 +10,9 @@ gem install rspec
 # 確認
 spec -v
 
+# runtime時に必要なのでhoeを入れる
+gem install hoe
+
 
 gem install rspec-rails
 
@@ -37,3 +40,6 @@ Railsify! > Plugins > validates_email_format_of
 
 インストール
 ruby script/plugin install http://code.dunae.ca/validates_email_for
+
+= postgresql
+gem install pg

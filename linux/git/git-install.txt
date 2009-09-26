@@ -39,10 +39,10 @@ make install
 make install-man
 
 
-cd /usr/local
-sudo rm git
-sudo ln -s git-${GIT_VER} git
-
+pushd /usr/local
+rm git
+ln -s git-${GIT_VER} git
+popd
 
 # perl の SVNパッケージを入れておかないと
 # git svnが使えない

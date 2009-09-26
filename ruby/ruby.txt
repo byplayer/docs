@@ -1,7 +1,7 @@
 -------------------------------------------------------------
  事前準備
 -------------------------------------------------------------
-aptitude install readline-dev zlib1g-dev
+aptitude install zlib1g-dev libreadline-dev
 
 -------------------------------------------------------------
 sudo su root
@@ -20,6 +20,7 @@ cd ruby-${RUBY_VER}-p${PATCH_LEV}
 export RUBY_HOME=/usr/local/ruby-${RUBY_VER}-p${PATCH_LEV}
 
 ./configure --prefix=${RUBY_HOME}
+
 make
 
 make install
