@@ -1,3 +1,28 @@
+= rspecをgemで入れる
+gem install rails
+
+# 確認
+rails -v
+
+
+gem install rspec
+
+# 確認
+spec -v
+
+
+gem install rspec-rails
+
+= rspecのrails環境を準備
+cd $RAILS_ROOT
+
+
+script/generate rspec
+
+script/generate rspec_model todo
+
+
+
 = rspecをプラグインとして入れる　for Rails >= 2.1.0
 ruby script/plugin install git://github.com/dchelimsky/rspec.git -r 'refs/tags/1.2.7'
 ruby script/plugin install git://github.com/dchelimsky/rspec-rails.git -r 'refs/tags/1.2.7.1'
