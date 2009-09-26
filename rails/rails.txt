@@ -1,0 +1,25 @@
+gem install rails
+
+# 確認
+rails -v
+
+
+gem install rspec
+
+# 確認
+spec -v
+
+
+gem install rspec-rails
+
+
+------------------------------------------------------------
+ rails
+------------------------------------------------------------
+cd $RAILS_ROOT
+
+
+script/generate rspec
+
+script/generate rspec_model todo
+
