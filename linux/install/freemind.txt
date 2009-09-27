@@ -1,0 +1,21 @@
+# 古いバージョンを一度入れてjavaまわりの環境を作っておく
+aptitude install freemind
+
+# 古いのでfreemindを消す
+aptitude remove freemind
+
+
+mkdir /usr/local/freemind
+/tmp/freemind-bin-max-0_8_1.zip /usr/local/freemind/
+cd /opt/freemind/
+unzip freemind-bin-max-0_8_1.zip
+chmod +x freemind.sh
+
+
+vi freemind.sh ; 下に編集内容を書いてます。
+
+  FREEMIND_BASE_DIR="/usr/local/freemind"
+
+ln -s /usr/local/freemind/freemind.sh /usr/local/freemind/freemind
+
+
