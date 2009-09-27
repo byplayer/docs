@@ -24,6 +24,10 @@ script/generate rspec
 
 script/generate rspec_model todo
 
+= sqlite
+aptitude install sqlite3 libsqlite3-dev
+
+gem install sqlite3-ruby
 
 
 = rspecをプラグインとして入れる　for Rails >= 2.1.0
