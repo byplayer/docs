@@ -1,0 +1,25 @@
+sudo su root
+
+cd /usr/local/src
+
+export ZSH_VER=4.3.10
+
+wget wget http://sourceforge.net/projects/zsh/files/zsh-dev/${ZSH_VER}/zsh-${ZSH_VER}.tar.bz2/download
+tar xjf zsh-${ZSH_VER}.tar.bz2
+
+cd zsh-${ZSH_VER}
+
+./configure --prefix=/usr/local/zsh-${ZSH_VER}
+
+make
+make install
+
+pushd /usr/local
+ln -s zsh-${ZSH_VER} zsh
+
+popd
+
+
+# /etc/shells
+# へ以下を追加して標準のshellとして使えるようにする
+/usr/local/zsh/bin/zsh
