@@ -59,13 +59,13 @@ gitはファイルの移動やコピーなどはコミットの情報に含ま�
 git whatchanged -pとかで最近の変更を追っ掛けられるのはsvn log -vを使うのに比べると(主に速くて)だいぶ良いなと思います。
 
 = gitにリモートを追加
-== 
+==
 local% mkdir private-repo
 local% cd private-repo
 local% git init
 local% git remote add origin ssh://git@remote-name.com/private/keiji.git
 local% echo 'This git repository is private.' > README
-local% git commit -a -m 
+local% git commit -a -m
 
 
 
@@ -91,3 +91,9 @@ git log --pretty=short
 変更理由２
 ...
 ---------------
+
+= パッチを当てる
+git apply hogehoge.patch
+
+= パッチを作る
+git format-patch BRANCHNAME

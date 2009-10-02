@@ -23,3 +23,5 @@ popd
 # /etc/shells
 # へ以下を追加して標準のshellとして使えるようにする
 /usr/local/zsh/bin/zsh
+
+chsh -s /usr/local/zsh/bin/zsh
