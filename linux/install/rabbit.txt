@@ -1,0 +1,21 @@
+= install RDtool
+
+sudo su root
+
+gem install gettext
+
+
+export RDTOOL_VER=0.6.20
+
+wget http://raa.ruby-lang.org/cache/rdtool/rdtool-${RDTOOL_VER}.tar.gz
+
+tar xzf rdtool-${RDTOOL_VER}.tar.gz
+cd rdtool-${RDTOOL_VER}
+
+
+export RABBIT_VER=0.6.1
+wget http://www.cozmixng.org/~kou/download/rabbit-${RABBIT_VER}.tar.gz
+
+tar xzf rabbit-${RABBIT_VER}.tar.gz
+cd rabbit-${RABBIT_VER}
+
