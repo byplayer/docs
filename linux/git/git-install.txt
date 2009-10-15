@@ -1,7 +1,7 @@
 -----------------------------------------------------------
  事前準備
 -----------------------------------------------------------
-aptitude install gettext tcl tk libsvn-perl asciidoc
+aptitude install gettext tcl tk libsvn-perl asciidoc libcurl4-dev
 
 -----------------------------------------------------------
 sudo su root
