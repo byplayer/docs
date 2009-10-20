@@ -1,11 +1,2 @@
-Emacs.Fontset-0: -*-fixed-medium-r-normal--14-*-*-*-*-*-fontset-14
-Emacs.Fontset-1: -*-fixed-medium-r-normal--12-*-*-*-*-*-fontset-12
-Emacs.Fontset-2: -*-fixed-medium-r-normal--24-*-*-*-*-*-fontset-24
-Emacs.Fontset-3: -*-fixed-medium-r-normal--16-*-*-*-*-*-fontset-16,\
-ascii:-shinonome-gothic-medium-r-normal-*-17-*-*-*-*-*-iso8859-*,\
-japanese-jisx0208:-shinonome-gothic-medium-r-normal-*-17-*-*-*-*-*-jisx0208*,\
-katakana-jisx0201:-shinonome-gothic-medium-r-normal-*-17-*-*-*-*-*-jisx0201*
-Emacs.Font: fontset-12
-
-Emacs*useXIM:	false
+Emacs*useXIM: false
 
