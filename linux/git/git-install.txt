@@ -1,14 +1,14 @@
 -----------------------------------------------------------
  事前準備
 -----------------------------------------------------------
-aptitude install gettext tcl tk libsvn-perl asciidoc libcurl4-dev
+aptitude install gettext tcl tk libsvn-perl asciidoc libcurl4-openssl-dev curl
 
 -----------------------------------------------------------
 sudo su root
 
 cd /usr/local/src
 
-export GIT_VER=1.6.4.4
+export GIT_VER=1.6.5.2
 
 wget http://kernel.org/pub/software/scm/git/git-${GIT_VER}.tar.bz2
 
