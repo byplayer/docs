@@ -1,0 +1,16 @@
+# fork先の修正を取り込む
+
+## fork をブランチへ取り込み
+$ git remote add -f otsune git://github.com/otsune/foltia-the-next-generation.git
+$ git checkout -b otsune/master
+$ git pull otsune master:02d0a00
+$ git branch
+
+## ブランチの変更をmasterへマージ
+
+$ git checkout master
+$ git merge 02d0a00
+
+## 変更をpush
+
+$ git push

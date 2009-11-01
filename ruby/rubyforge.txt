@@ -1,0 +1,15 @@
+= install
+
+ gem install rubyforge
+
+= 設定
+
+ rubyforge setup
+
+ - user
+ - password
+
+を設定
+
+= プロジェクト情報取得など
+ rubyforge config

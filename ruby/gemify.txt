@@ -1,0 +1,33 @@
+=
+This document use gemify 0.2.4 .
+
+= install
+$ gem install gemify
+
+
+= initialize
+プロジェクトのホームディレクトリで
+$ gemify
+
+Welcome to Gemify!
+
+Which task would you like to invoke?
+1) Set name (required)
+2) Set summary (required)
+3) Set version (required)
+4) Set author
+5) Set email
+6) Set homepage
+7) Set RubyForge project
+8) Toogle documentation = false
+9) Set dependencies
+
+s) Save
+i) Show included files
+
+b) Build gem
+x) Exit
+
+>
+
+

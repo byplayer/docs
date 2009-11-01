@@ -1,0 +1,36 @@
+= install
+
+ gem install rtask
+
+
+= add rake task
+以下をRakefileへ追加
+
+ require 'rubygems'
+ require "rtask"
+
+ # create rtask tasks
+ RTask.new
+
+= rubyforgeへ
+ rubyforge setup
+ rubyforge config
+
+を事前に済ませておく。
+
+= rakeを使わない場合
+== リリース
+ rtask -r
+
+== APIアップ
+ rtask -p
+
+== ごみ掃除
+ rtask -c
+
+= rakeを使う場合
+== リリース
+rake release
+
+== APIドキュメント公開
+ rake publish
