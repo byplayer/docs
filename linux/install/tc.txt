@@ -1,0 +1,36 @@
+-------------------------------------------------------------
+ 事前準備
+-------------------------------------------------------------
+aptitude install zlib1g-dev libbz2-dev
+
+-------------------------------------------------------------
+sudo su root
+
+cd /usr/local/src
+
+TC_VER=1.4.37
+
+wget http://1978th.net/tokyocabinet/tokyocabinet-${TC_VER}.tar.gz
+
+tar xzf tokyocabinet-${TC_VER}.tar.gz
+cd tokyocabinet-${TC_VER}
+
+TC_HOME=/usr/local/tokyocabinet-${TC_VER}
+
+echo ${TC_HOME}
+
+./configure --prefix=${TC_HOME}
+
+make
+make check
+
+make install
+
+pushd /usr/local
+
+
+rm tokyocabinet
+
+ln -s tokyocabinet-${TC_VER} tokyocabinet
+
+popd
