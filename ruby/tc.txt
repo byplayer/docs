@@ -1,0 +1,29 @@
+-------------------------------------------------------------
+ 前提条件
+-------------------------------------------------------------
+TokyoCabinetが
+
+/usr/local/tokyocabinet
+へ、インストールされている環境でのインストール方法。
+
+-------------------------------------------------------------
+sudo su root
+
+TCR_VER=1.29
+
+cd /usr/local
+wget http://tokyocabinet.sourceforge.net/rubypkg/tokyocabinet-ruby-${TCR_VER}.tar.gz
+
+tar xzf tokyocabinet-ruby-${TCR_VER}.tar.gz
+cd tokyocabinet-ruby-${TCR_VER}
+
+ruby extconf.rb -- --with-tokyocabinet-dir=/usr/local/tokyocabinet
+make
+make install
+
+# 確認
+
+ruby -e "require 'tokyocabinet'"
+
+  -> エラーがでないことを確認する
+
