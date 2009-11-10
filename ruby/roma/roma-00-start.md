@@ -17,12 +17,14 @@ TCStrageを使う場合は、TCとRubyのTCバインディングも入れてお�
     rttable
     mkroute localhost_12000 localhost_12001 --enabled_repeathost
 
-    romad localhost -p 12000 -d --enabled_repeathost
-    romad localhost -p 12001 -d --enabled_repeathost
+    romad localhost -p 12000 -d --enabled_repeathost -nromatest
+    romad localhost -p 12001 -d --enabled_repeathost -nromatest
 
     -p はポート番号
     -d はデーモンモード
     --enabled_repeathost は他のホストのROMAとの連携をしないようにするオプション
+
+    romad localhost -p 12003 -d -jlocalhost_12000  -n romatest
 
 
 ステータス確認
@@ -76,3 +78,6 @@ roma01_*, roma02_*, roma03_*のファイルは、それぞれ該当のホスト�
     romad roma03 -p 12001 -d -n romatest
 
 # TCバインディングと設定変更
+
+# 既存のものにジョイン
+    romad localhost -p 12003 -d -jroma01_12000  -n romatest
