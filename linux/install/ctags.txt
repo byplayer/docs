@@ -10,6 +10,9 @@ cd ctags-${CTAGS_VER}
 
 ./configure --prefix=/usr/local/ctags-${CTAGS_VER}
 
+make
+make install
+
 
 pushd /usr/local
 
@@ -20,3 +23,7 @@ popd
 # ctags 環境設定
 export PATH=/usr/local/ctags/bin:$PATH
 export MANPATH=/usr/local/ctags/share/man:`manpath -q`
+
+# emacs用タグを作る
+# ctags -e
+# -Rで再帰的にサブディレクトリも処理
