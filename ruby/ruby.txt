@@ -1,7 +1,7 @@
 -------------------------------------------------------------
  事前準備
 -------------------------------------------------------------
-aptitude install zlib1g-dev libreadline-dev
+aptitude install zlib1g-dev libreadline-dev libssl-dev
 
 -------------------------------------------------------------
 sudo su root
