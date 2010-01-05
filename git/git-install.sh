@@ -45,7 +45,7 @@ make install-man
 
 
 pushd /usr/local
-if [ -f git ];
+if [ -L git ];
 then
   rm git
 fi
