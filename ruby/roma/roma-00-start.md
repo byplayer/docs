@@ -14,7 +14,7 @@ TCStrageを使う場合は、TCとRubyのTCバインディングも入れてお�
 # お試し利用
 ルーティングテーブルを作成
     mkdir rttable
-    rttable
+    cd rttable
     mkroute localhost_12000 localhost_12001 --enabled_repeathost
 
     romad localhost -p 12000 -d --enabled_repeathost -nromatest

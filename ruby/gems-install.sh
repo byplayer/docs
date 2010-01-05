@@ -1,4 +1,11 @@
-aptitude install libxml2-dev libxslt-dev
+#!/bin/bash
+# aptitude install libxml2-dev libxslt-dev
+
+which ruby
+which gem
+ruby -v
+gem -v
+gem env
 
 gem install nokogiri
 gem install mechanize
