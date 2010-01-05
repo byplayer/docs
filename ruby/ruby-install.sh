@@ -7,7 +7,6 @@
 
 RUBY_VER=1.8.7
 PATCH_LEV=248
-GEM_VER=1.3.5
 
 cd /usr/local/src
 
@@ -35,7 +34,7 @@ make
 make install
 
 cd /usr/local
-if [ -f ruby ] ;
+if [ -L ruby ] ;
 then
   rm ruby
 fi
