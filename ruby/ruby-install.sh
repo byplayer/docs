@@ -6,12 +6,12 @@
 # This script should run as root .
 
 RUBY_VER=1.8.7
-# PATCH_LEV=248
-PATCH_LEV=72
+PATCH_LEV=248
+# PATCH_LEV=72
 
-RUBY_URL=http://core.ring.gr.jp/archives/lang/ruby/1.8/ruby-${RUBY_VER}-p${PATCH_LEV}.tar.bz2
+# RUBY_URL=http://core.ring.gr.jp/archives/lang/ruby/1.8/ruby-${RUBY_VER}-p${PATCH_LEV}.tar.bz2
 
-# RUBY_URL=http://core.ring.gr.jp/archives/lang/ruby/ruby-${RUBY_VER}-p${PATCH_LEV}.tar.bz2
+RUBY_URL=http://core.ring.gr.jp/archives/lang/ruby/ruby-${RUBY_VER}-p${PATCH_LEV}.tar.bz2
 cd /usr/local/src
 
 if [ -f ruby-${RUBY_VER}-p${PATCH_LEV} ];
