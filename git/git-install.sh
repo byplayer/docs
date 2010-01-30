@@ -6,7 +6,7 @@
 # -----------------------------------------------------------
 # aptitude install gettext tcl tk libsvn-perl asciidoc libcurl4-openssl-dev curl
 #
-GIT_VER=1.6.6
+GIT_VER=1.6.6.1
 
 cd /usr/local/src
 
