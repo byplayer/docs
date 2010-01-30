@@ -8,7 +8,7 @@
 
 
 RUBY_VER=1.9.1
-PATCH_LEV=376
+PATCH_LEV=378
 
 cd /usr/local/src
 if [ -f ruby-${RUBY_VER}-p${PATCH_LEV} ];
