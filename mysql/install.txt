@@ -1,0 +1,29 @@
+= first
+install binary .
+./install.sh
+
+ install mysql to
+   /usr/local/mysql-${MYSQL_VER}
+
+   and symlink
+
+   /usr/local/mysql
+     -> /usr/local/mysql-${MYSQL_VER}
+
+= add user
+groupadd mysql
+useradd -g mysql mysql
+
+= create database dir
+mkdir -p /usr/local/var/mysql
+chown mysql:mysql -R /usr/local/var/mysql
+chmod go-rwx /usr/local/var/mysql
+
+su mysql
+/usr/local/mysql/bin/mysql_install_db --user=mysql --datadir=/usr/local/var/mysql
+
+cd /usr/local/src/mysql-${MYSQL_VER}
+cp support-files/my-medium.cnf /etc/my.cf
+
+
+
