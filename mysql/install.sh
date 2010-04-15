@@ -4,24 +4,23 @@ MYSQL_VER=5.0.33
 
 cd /usr/local/src
 
-if [ -f mysql-${MYSQL_VE} ];
+if [ -f mysql-${MYSQL_VER} ];
 then
-  echo mysql-${MYSQL_VE} already exists .
+  echo mysql-${MYSQL_VER} already exists .
   exit 1
 fi
 
-if [ ! -f mysql-${MYSQL_VE}.tar.gz ];
+if [ ! -f mysql-${MYSQL_VER}.tar.gz ];
 then
-  # TODO
-  # wget
+  wget http://downloads.mysql.com/archives/mysql-5.0/mysql-5.0.33.tar.gz
 fi
 
 
-tar xzf mysql-${MYSQL_VE}.tar.gz
+tar xzf mysql-${MYSQL_VER}.tar.gz
 
-cd mysql-${MYSQL_VE}
+cd mysql-${MYSQL_VER}
 
-INSTALL_DIR=/usr/local/mysql-${MYSQL_VE}
+INSTALL_DIR=/usr/local/mysql-${MYSQL_VER}
 
 ./configure --prefix=${INSTALL_DIR} \
   --datadir=/usr/local/var/data/mysql \
@@ -30,3 +29,9 @@ INSTALL_DIR=/usr/local/mysql-${MYSQL_VE}
 
 make && make install
 
+cd /usr/local
+if [ -L mysql ] ; then
+  rm mysql
+fi
+
+ln -s mysql-${MYSQL_VER} mysql
