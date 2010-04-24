@@ -22,8 +22,26 @@ chmod go-rwx /usr/local/var/mysql
 su mysql
 /usr/local/mysql/bin/mysql_install_db --user=mysql --datadir=/usr/local/var/mysql
 
-cd /usr/local/src/mysql-${MYSQL_VER}
-cp support-files/my-medium.cnf /etc/my.cf
+mkdir /usr/local/mysql/conf
 
+pushd /usr/local/src/mysql-${MYSQL_VER}
+cp support-files/my-medium.cnf /usr/local/mysql/conf/my.cf
+popd
+
+# copy mysql.server from this directory
+cp ./mysql.server /etc/init.d/
+chmod a+x /etc/init.d/mysql.server
+
+# test
+cd /etc/init.d/
+./mysql.server start
+
+
+cd /etc/init.d/
+update-rc.d mysql.server defaults 90
+
+=change root password
+mysql -uroot
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('NEWPWD');
 
 
