@@ -1,0 +1,8 @@
+sudo ./install.sh
+
+sudo cp nginx /etc/init.d/
+
+
+pushd /etc/init.d/
+sudo /usr/sbin/update-rc.d -f nginx defaults
+popd
