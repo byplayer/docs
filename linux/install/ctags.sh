@@ -1,4 +1,4 @@
-sudo su root
+#/bin/sh
 
 cd /usr/local/src
 
@@ -14,15 +14,13 @@ make
 make install
 
 
-pushd /usr/local
+cd /usr/local
 
 ln -s ctags-${CTAGS_VER} ctags
 
-popd
-
 # ctags 環境設定
-export PATH=/usr/local/ctags/bin:$PATH
-export MANPATH=/usr/local/ctags/share/man:`manpath -q`
+# export PATH=/usr/local/ctags/bin:$PATH
+# export MANPATH=/usr/local/ctags/share/man:`manpath -q`
 
 # emacs用タグを作る
 # ctags -e
