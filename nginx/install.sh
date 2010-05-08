@@ -1,5 +1,7 @@
 #!/bin/sh
 
+aptitude install libpcre3-dev
+
 NGINX_VER=0.8.36
 
 cd /usr/local/src
