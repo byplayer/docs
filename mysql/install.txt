@@ -24,9 +24,8 @@ su mysql
 
 mkdir /usr/local/mysql/conf
 
-pushd /usr/local/src/mysql-${MYSQL_VER}
-cp support-files/my-medium.cnf /usr/local/mysql/conf/my.cf
-popd
+
+cp ./my.cf /usr/local/mysql/conf/my.cf
 
 # copy mysql.server from this directory
 cp ./mysql.server /etc/init.d/
@@ -43,5 +42,6 @@ update-rc.d mysql.server defaults 90
 =change root password
 mysql -uroot
 SET PASSWORD FOR 'root'@'localhost' = PASSWORD('NEWPWD');
+
 
 
