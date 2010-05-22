@@ -97,3 +97,12 @@ git apply hogehoge.patch
 
 = パッチを作る
 git format-patch BRANCHNAME
+
+= commit取り消し
+== １つ前の変更を履歴を残して戻す
+git revert HEAD
+
+== 履歴ごと抹消する
+リモートブランチへプッシュ済みの場合はこれを行うと
+整合性が取れなくなるので行ってはいけません。
+git reset --hard ${removed version}

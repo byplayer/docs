@@ -4,9 +4,9 @@
 # -----------------------------------------------------------
 #  事前準備
 # -----------------------------------------------------------
-# aptitude install gettext tcl tk libsvn-perl asciidoc libcurl4-openssl-dev curl
+aptitude install gettext tcl tk libsvn-perl asciidoc libcurl4-openssl-dev curl
 #
-GIT_VER=1.7.0.4
+GIT_VER=1.7.1
 
 cd /usr/local/src
 

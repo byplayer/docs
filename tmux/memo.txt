@@ -1,0 +1,23 @@
+
+
+= keybind
+ウィンドウを作成                [prefix] c
+ウィンドウ名を変更              [prefix] ,
+ウィンドウ一覧表示／移動        [prefix] w
+次のウィンドウへ移動            [prefix] n
+前のウィンドウへ移動            [prefix] p
+最後に操作したウィンドウへ移動   [prefix] l
+ウィンドウを強制終了            [prefix] &
+ペイン分割                     [prefix] "
+ペイン分割解除                 [prefix] !
+ペインを強制終了               [prefix] x
+ペイン間移動                   [prefix] o または [prefix] Up または [prefix] Down
+ペインを狭める／広げる          [prefix] C-Up または [prefix] M-Up または [prefix] C-Down または [prefix] M-Down
+ペイン配置パターンの変更        [prefix] Space または [prefix] {1,2,9}
+中断                          [prefix] d
+再開                          tmux attach
+ウィンドウ配置の変更           [prefix] Space
+コピーモードでのコピー始点選択  C-Space (viモードならSpace)
+コピーモードでのコピー終点選択  M-w (viモードならEnter)
+現時刻表示                    [prefix] t
+
