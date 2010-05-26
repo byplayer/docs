@@ -4,6 +4,7 @@
     rotate 14
     missingok
     ifempty
+    compress
     sharedscripts
     postrotate
         test ! -f /usr/local/nginx/logs/nginx.pid || kill -USR1 `cat /usr/local/nginx/logs/nginx.pid`
