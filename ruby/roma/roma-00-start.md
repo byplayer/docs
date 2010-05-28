@@ -42,9 +42,14 @@ TCStrageを使う場合は、TCとRubyのTCバインディングも入れてお�
 
 もちろん別ポートのROMAとも連携している
     telnet localhost 12001
-    get foo<retnr>
+    get foo<return>
     bar
     END
+
+削除
+    telnet localhost 12000
+    delete foo<return>
+
 
  romadの終了
     プロセスを１つずつkill
