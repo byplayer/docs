@@ -20,7 +20,7 @@ fi
 if [ ! -f ruby-${RUBY_VER}-p${PATCH_LEV}.tar.bz2 ];
 then
   echo get ruby-${RUBY_VER}-p${PATCH_LEV}.tar.bz2
-  http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-${RUBY_VER}-${PATCH_LEV}.tar.bz2
+  wget http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-${RUBY_VER}-p${PATCH_LEV}.tar.bz2
 fi
 
 echo extract ruby-${RUBY_VER}-p${PATCH_LEV}.tar.bz2
