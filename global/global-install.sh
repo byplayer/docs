@@ -25,7 +25,7 @@ fi
 tar xzf ${ARCHIVE_NAME}
 
 cd ${TARGET_DIR}
-./configure --prefix=${INSTALL_DIR}
+./configure --prefix=${INSTALL_DIR} --with-exuberant-ctags=/usr/local/ctags/bin/ctags
 
 make
 make install
