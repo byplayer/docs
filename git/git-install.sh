@@ -2,11 +2,11 @@
 #
 # This script run as root
 # -----------------------------------------------------------
-#  事前準備
+#  install packages
 # -----------------------------------------------------------
 aptitude install gettext tcl tk libsvn-perl asciidoc libcurl4-openssl-dev curl
 #
-GIT_VER=1.7.3.2
+GIT_VER=1.7.4.1
 
 cd /usr/local/src
 
@@ -27,10 +27,10 @@ cd git-${GIT_VER}
 ./configure --with-openssl --with-curl --with-expat --with-perl --prefix=/usr/local/git-${GIT_VER}
 
 
-# debian 4の場合は
+# If you use old debian
 # vi http.h
 
-# 以下をコメントアウト
+# comment out follow line
 
 # -----------------------------------------------------------
 #if LIBCURL_VERSION_NUM >= 0x071000
@@ -52,9 +52,8 @@ fi
 ln -s git-${GIT_VER} git
 popd
 
-# perl の SVNパッケージを入れておかないと
-# git svnが使えない
+# If you want to use git svn, you need to install perl svn .
 
-# git 環境設定
+# setup environment .
 # export PATH=/usr/local/git/bin:$PATH
 # export MANPATH=/usr/local/git/share/man:`manpath -q`
