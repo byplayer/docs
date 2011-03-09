@@ -8,4 +8,4 @@ git config --global alias.ds "diff --stat"
 git config --global alias.sm submodule
 git config --global alias.l log
 git config --global alias.lo "log --oneline"
-git config --global alias.lg "log --graph --date-order -C -M --pretty=format:\"%Cgreen%h %ad %Cblue%cn %Cgreen%d%Creset %s\" --all --date=short"
+git config --global alias.lg "log --graph --date-order -C -M --pretty=format:\"%C(yellow)%h %Cblue%ad %Cblue%cn %Cgreen%d%Creset %s\" --all --date=short"
