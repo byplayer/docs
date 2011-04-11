@@ -25,7 +25,8 @@ INSTALL_DIR=/usr/local/mysql-${MYSQL_VER}
 ./configure --prefix=${INSTALL_DIR} \
   --datadir=/usr/local/var/data/mysql \
   --with-charset=utf8 \
-  --with-extra-charsets=ujis,sjis,cp932
+  --with-extra-charsets=ujis,sjis,cp932 \
+  --enable-thread-safe-client
 
 make && make install
 
