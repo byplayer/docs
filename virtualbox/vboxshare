@@ -1,0 +1,19 @@
+#!/bin/sh
+
+case "$1" in
+  start)
+    echo "Starting mount share directory for vbox"
+    mount.vboxsf -o uid=1000,gid=1000,dmode=0775,fmode=0664 share /mnt/share
+    ;;
+  stop)
+    echo "Stopping mount share directory for vbox"
+    umount /mnt/share
+    ;;
+  *)
+    echo "Usage: /etc/init.d/vboxshare {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0
+
