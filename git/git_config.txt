@@ -11,7 +11,7 @@ git config --global alias.ds "diff --stat"
 git config --global alias.sm submodule
 git config --global alias.l log
 git config --global alias.lo "log --oneline"
-git config --global alias.lg "log --graph --pretty=format:'%C(yellow)%h %C(green)%d%Creset %s %Cblue(%ad) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short --branches"
+git config --global alias.lg "log --graph --pretty=format:'%C(yellow)%h%C(green)%d%Creset %s %Cblue[%ad]%C(bold blue)<%an>%Creset' --abbrev-commit --date=short --branches"
 git config --global push.default tracking
 
 git config --global color.branch always
