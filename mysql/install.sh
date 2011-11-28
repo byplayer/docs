@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MYSQL_VER=5.0.33
+MYSQL_VER=5.1.59
 
 cd /usr/local/src
 
@@ -12,7 +12,7 @@ fi
 
 if [ ! -f mysql-${MYSQL_VER}.tar.gz ];
 then
-  wget http://downloads.mysql.com/archives/mysql-5.0/mysql-5.0.33.tar.gz
+  wget http://downloads.mysql.com/archives/mysql-5.1/mysql-${MYSQL_VER}.tar.gz
 fi
 
 
@@ -23,7 +23,6 @@ cd mysql-${MYSQL_VER}
 INSTALL_DIR=/usr/local/mysql-${MYSQL_VER}
 
 ./configure --prefix=${INSTALL_DIR} \
-  --datadir=/usr/local/var/data/mysql \
   --with-charset=utf8 \
   --with-extra-charsets=ujis,sjis,cp932 \
   --enable-thread-safe-client
