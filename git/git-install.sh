@@ -4,21 +4,22 @@
 # -----------------------------------------------------------
 #  install packages
 # -----------------------------------------------------------
-aptitude install gettext tcl tk libsvn-perl asciidoc libcurl4-openssl-dev curl
+aptitude install gettext tcl tk libsvn-perl asciidoc libcurl-dev libcurl-ssl-dev curl\
+  libexpat-dev
 #
-GIT_VER=1.7.4.1
+GIT_VER=1.7.8
 
 cd /usr/local/src
 
 
-if [ ! -f git-${GIT_VER}.tar.bz2 ];
+if [ ! -f git-${GIT_VER}.tar.gz ];
 then
-  wget http://kernel.org/pub/software/scm/git/git-${GIT_VER}.tar.bz2
+  wget http://git-core.googlecode.com/files/git-${GIT_VER}.tar.gz
 fi
 
 
 
-tar xjf git-${GIT_VER}.tar.bz2
+tar xzf git-${GIT_VER}.tar.gz
 
 cd git-${GIT_VER}
 
@@ -39,9 +40,7 @@ cd git-${GIT_VER}
 # -----------------------------------------------------------
 
 make
-make man
 make install
-make install-man
 
 
 pushd /usr/local
@@ -51,6 +50,9 @@ then
 fi
 ln -s git-${GIT_VER} git
 popd
+
+make man
+make install-man
 
 # If you want to use git svn, you need to install perl svn .
 
