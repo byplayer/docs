@@ -50,3 +50,6 @@ popd
 # git 環境設定
 export PATH=/usr/local/git/bin:$PATH
 export MANPATH=/usr/local/git/share/man:`manpath -q`
+
+# ingore ssl verify
+export GIT_SSL_NO_VERIFY=true
