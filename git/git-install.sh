@@ -4,7 +4,7 @@
 # -----------------------------------------------------------
 #  install packages
 # -----------------------------------------------------------
-aptitude install gettext tcl tk libsvn-perl asciidoc libcurl-dev libcurl-ssl-dev curl\
+aptitude install gettext tcl tk libsvn-perl asciidoc libcurl4-dev libcurl4-openssl-dev curl\
   libexpat-dev zlib1g-dev libbz2-dev
 #
 GIT_VER=1.7.9.2
