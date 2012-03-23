@@ -5,7 +5,7 @@
 #  install packages
 # -----------------------------------------------------------
 aptitude install gettext tcl tk libsvn-perl asciidoc libcurl-dev libcurl-ssl-dev curl\
-  libexpat-dev
+  libexpat-dev zlib1g-dev libbz2-dev
 #
 GIT_VER=1.7.8.1
 
