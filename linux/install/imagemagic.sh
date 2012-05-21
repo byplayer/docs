@@ -11,4 +11,6 @@ cd ImageMagick-${VERSION}
 make
 make install
 
-
+pushd /usr/local/
+ln -s ImageMagic-${VERSION} ImageMagic
+popd
