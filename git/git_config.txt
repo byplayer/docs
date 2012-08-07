@@ -23,3 +23,26 @@ git config --global color.branch always
 git config --global color.diff always
 git config --global color.interactive always
 git config --global color.status always
+
+
+------------
+wget http://www.perforce.com/downloads/perforce/r12.1/bin.linux26x86_64/p4v.tgz
+
+---
+gitconfig
+
+[diff]
+  tool = p4merge
+[difftool]
+  prompt = false
+[difftool "p4merge"]
+  cmd = p4merge "$LOCAL" "$REMOTE"
+
+[merge]
+    tool = p4merge
+    keepBackup = false
+[mergetool "p4merge"]
+    cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+    keepTemporaries = false
+    trustExitCode = false
+    keepBackup = false
