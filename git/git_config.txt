@@ -15,6 +15,8 @@ git config --global alias.cia "commit --amend"
 git config --global alias.l log
 git config --global alias.lo "log --oneline"
 git config --global alias.lg "log --graph --pretty=format:'%C(yellow)%h%C(green)%d%Creset %s %Cblue[%ad]%C(bold blue)<%an>%Creset' --abbrev-commit --date=short --branches"
+git config --global alias.dt difftool
+git config --global alias.mt mergetool
 git config --global push.default tracking
 
 git config --global color.branch always
