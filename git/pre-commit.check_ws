@@ -1,0 +1,15 @@
+#!/bin/sh
+
+red="\033[1;31m"
+color_end="\033[0m"
+
+# Check unwanted trailing whitespace or space/tab indents;
+
+git diff --cached --check > /dev/null 2>&1
+if [ $? -ne 0 ] ; then
+    echo ${red}white space error${color_end}
+    git diff --cached --check
+    exit 1
+fi
+
+echo no white space, OK.
