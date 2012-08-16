@@ -5,7 +5,7 @@ git config --global user.email you@yourdomain.example.com
 
 git config --global alias.co checkout
 git config --global alias.br branch
-git config --global alias.mg "merge --no-ff"
+git config --global alias.mg "merge"
 git config --global alias.stat status
 git config --global alias.st status
 git config --global alias.ds "diff --stat"
@@ -15,9 +15,36 @@ git config --global alias.cia "commit --amend"
 git config --global alias.l log
 git config --global alias.lo "log --oneline"
 git config --global alias.lg "log --graph --pretty=format:'%C(yellow)%h%C(green)%d%Creset %s %Cblue[%ad]%C(bold blue)<%an>%Creset' --abbrev-commit --date=short --branches"
+git config --global alias.dt difftool
+git config --global alias.mt mergetool
 git config --global push.default tracking
 
 git config --global color.branch always
 git config --global color.diff always
 git config --global color.interactive always
 git config --global color.status always
+
+git config --global credential.helper store
+
+
+------------
+wget http://www.perforce.com/downloads/perforce/r12.1/bin.linux26x86_64/p4v.tgz
+
+---
+gitconfig
+
+[diff]
+  tool = p4merge
+[difftool]
+  prompt = false
+[difftool "p4merge"]
+  cmd = p4merge "$LOCAL" "$REMOTE"
+
+[merge]
+    tool = p4merge
+    keepBackup = false
+[mergetool "p4merge"]
+    cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+    keepTemporaries = false
+    trustExitCode = false
+    keepBackup = false
