@@ -31,6 +31,9 @@ git config --global color.status always
 
 git config --global credential.helper store
 
+# accept cr for CR code
+git config --global core.whitespace cr-at-eol
+
 
 ------------
 wget http://www.perforce.com/downloads/perforce/r12.1/bin.linux26x86_64/p4v.tgz
