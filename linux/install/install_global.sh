@@ -1,6 +1,6 @@
 cd /usr/local/src
 
-GB_VER=6.2.4
+GB_VER=6.2.5
 wget http://tamacom.com/global/global-${GB_VER}.tar.gz
 
 tar xzf global-${GB_VER}.tar.gz
