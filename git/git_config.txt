@@ -23,6 +23,7 @@ git config --global alias.dt difftool
 git config --global alias.dc "diff --check"
 git config --global alias.mt mergetool
 git config --global alias.r.s "remote show"
+git config --global alias.r.p "remote prune"
 
 git config --global push.default tracking
 
