@@ -1,5 +1,5 @@
 # ssh key
-ssh-keygen -t rsa -C yourname@hostname
+ssh-keygen -t rsa -C ${USER}@${HOSTNAME}
 
 # config
 git config --global user.name "Your Name"
