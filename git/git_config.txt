@@ -26,6 +26,8 @@ git config --global alias.r.s "remote show"
 git config --global alias.r.s.o "remote show origin"
 git config --global alias.r.p "remote prune"
 git config --global alias.r.p.o "remote prune origin"
+git config --global alias.r.rb "remove-remote-branch"
+git config --global alias.r.rb.o "remove-remote-branch origin"
 
 git config --global push.default tracking
 
