@@ -39,7 +39,6 @@ git config --global color.status always
 
 git config --global credential.helper store
 
-# accept cr for CR code
 git config --global core.whitespace cr-at-eol
 
 
