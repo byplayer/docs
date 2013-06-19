@@ -5,43 +5,6 @@ ssh-keygen -t rsa -C ${USER}@${HOSTNAME}
 git config --global user.name "Your Name"
 git config --global user.email you@yourdomain.example.com
 
-
-
-git config --global alias.co checkout
-git config --global alias.br branch
-git config --global alias.mg "merge"
-git config --global alias.stat status
-git config --global alias.st status
-git config --global alias.ds "diff --stat"
-git config --global alias.sm submodule
-git config --global alias.ci commit
-git config --global alias.cia "commit --amend"
-git config --global alias.l log
-git config --global alias.lo "log --oneline"
-git config --global alias.lg "log --graph --pretty=format:'%C(yellow)%h%C(green)%d%Creset %s %Cblue[%ad]%C(bold blue)<%an>%Creset' --abbrev-commit --date=short --branches"
-git config --global alias.dt difftool
-git config --global alias.dc "diff --check"
-git config --global alias.mt mergetool
-git config --global alias.r.s "remote show"
-git config --global alias.r.s.o "remote show origin"
-git config --global alias.r.p "remote prune"
-git config --global alias.r.p.o "remote prune origin"
-git config --global alias.r.rb "remove-remote-branch"
-git config --global alias.r.rb.o "remove-remote-branch origin"
-
-git config --global push.default tracking
-
-
-git config --global color.branch always
-git config --global color.diff always
-git config --global color.interactive always
-git config --global color.status always
-
-git config --global credential.helper store
-
-git config --global core.whitespace cr-at-eol
-
-
 ------------
 wget http://www.perforce.com/downloads/perforce/r12.1/bin.linux26x86_64/p4v.tgz
 
