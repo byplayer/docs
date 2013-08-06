@@ -6,7 +6,7 @@ git config --global user.name "Your Name"
 git config --global user.email you@yourdomain.example.com
 
 ------------
-wget http://www.perforce.com/downloads/perforce/r12.1/bin.linux26x86_64/p4v.tgz
+wget http://filehost.perforce.com/perforce/r13.2/bin.linux26x86_64/p4v.tgz
 
 ---
 gitconfig
