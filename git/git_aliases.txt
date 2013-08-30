@@ -30,3 +30,4 @@ git config --global color.status always
 git config --global credential.helper store
 
 git config --global core.whitespace cr-at-eol
+git config --global core.pager 'less -x1,5'
