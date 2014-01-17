@@ -12,4 +12,10 @@ make
 make install
 
 cd /usr/local/
+
+if [ -L global ];
+then
+  rm global
+fi
+
 ln -s global-${GB_VER} global
