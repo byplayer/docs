@@ -14,7 +14,7 @@ cd /usr/local/src
 
 if [ ! -f git-${GIT_VER}.tar.gz ];
 then
-  wget https://github.com/git/git/archive/v${GIT_VER}.tar.gz -O git-${GIT_VER}.tar.gz
+  wget https://git-core.googlecode.com/files/git-${GIT_VER}.tar.gz
 fi
 
 
