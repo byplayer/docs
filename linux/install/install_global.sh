@@ -6,7 +6,8 @@ wget http://tamacom.com/global/global-${GB_VER}.tar.gz
 tar xzf global-${GB_VER}.tar.gz
 
 cd global-${GB_VER}
-./configure --prefix=/usr/local/global-${GB_VER}
+./configure --prefix=/usr/local/global-${GB_VER} \
+  --with-exuberant-ctags=`which ctags-exuberant`
 
 make
 make install
