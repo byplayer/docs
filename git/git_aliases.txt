@@ -20,7 +20,7 @@ git config --global alias.r.p.o "remote prune origin"
 git config --global alias.r.rb "remove-remote-branch"
 git config --global alias.r.rb.o "remove-remote-branch origin"
 
-git config --global push.default current
+git config --global push.default upstream
 
 git config --global color.branch always
 git config --global color.diff always
