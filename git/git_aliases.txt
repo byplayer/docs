@@ -12,6 +12,7 @@ git config --global alias.lo "log --oneline"
 git config --global alias.lg "log --graph --pretty=format:'%C(yellow)%h%C(green)%d%Creset %s %Cblue[%ad]%C(bold blue)<%an>%Creset' --abbrev-commit --date=short --branches"
 git config --global alias.dt difftool
 git config --global alias.dc "diff --check"
+git config --global alias.dw "diff --color-words"
 git config --global alias.mt mergetool
 git config --global alias.r.s "remote show"
 git config --global alias.r.s.o "remote show origin"
