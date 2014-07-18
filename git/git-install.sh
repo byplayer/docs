@@ -25,7 +25,7 @@ cd git-${GIT_VER}
 
 
 
-./configure --with-openssl --with-curl --with-expat --with-perl --prefix=/usr/local/git-${GIT_VER}
+./configure --with-openssl --with-curl --with-expat --with-perl --prefix=/opt/git-${GIT_VER}
 
 
 # If you use old debian
