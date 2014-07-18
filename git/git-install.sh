@@ -43,7 +43,7 @@ make
 make install
 
 
-pushd /usr/local
+pushd /opt
 if [ -L git ];
 then
   rm git
