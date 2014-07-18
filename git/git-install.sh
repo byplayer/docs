@@ -7,14 +7,14 @@
 aptitude install gettext tcl tk libsvn-perl asciidoc libcurl4-dev libcurl4-openssl-dev curl\
   libexpat-dev zlib1g-dev libbz2-dev
 #
-GIT_VER=1.9.0
+GIT_VER=2.0.2
 
 cd /usr/local/src
 
 
 if [ ! -f git-${GIT_VER}.tar.gz ];
 then
-  wget https://git-core.googlecode.com/files/git-${GIT_VER}.tar.gz
+  wget https://www.kernel.org/pub/software/scm/git/git-${GIT_VER}.tar.gz
 fi
 
 
