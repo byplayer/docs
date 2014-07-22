@@ -12,8 +12,7 @@ GIT_VER=2.0.2
 cd /usr/local/src
 
 if [ ! -d /opt/git-${GIT_VER} ]; then
-  if [ ! -f git-${GIT_VER}.tar.gz ];
-  then
+  if [ ! -f git-${GIT_VER}.tar.gz ]; then
     wget https://www.kernel.org/pub/software/scm/git/git-${GIT_VER}.tar.gz
   fi
 
@@ -26,8 +25,10 @@ if [ ! -d /opt/git-${GIT_VER} ]; then
 
   make
   make install
+  
+  make man
+  make install-man
 fi
-
 
 pushd /opt
 if [ -L git ];
@@ -36,9 +37,6 @@ then
 fi
 ln -s git-${GIT_VER} git
 popd
-
-make man
-make install-man
 
 # If you want to use git svn, you need to install perl svn .
 
