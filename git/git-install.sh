@@ -15,6 +15,10 @@ if [ ! -d /opt/git-${GIT_VER} ]; then
   if [ ! -f git-${GIT_VER}.tar.gz ]; then
     wget https://www.kernel.org/pub/software/scm/git/git-${GIT_VER}.tar.gz
   fi
+  
+  if [ -d git-${GIT_VER} ]; then
+    rm -rf git-${GIT_VER}
+  fi
 
   tar xzf git-${GIT_VER}.tar.gz
 
