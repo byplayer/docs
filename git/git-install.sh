@@ -11,36 +11,22 @@ GIT_VER=2.0.2
 
 cd /usr/local/src
 
+if [ ! -d /opt/git-${GIT_VER} ]; then
+  if [ ! -f git-${GIT_VER}.tar.gz ];
+  then
+    wget https://www.kernel.org/pub/software/scm/git/git-${GIT_VER}.tar.gz
+  fi
 
-if [ ! -f git-${GIT_VER}.tar.gz ];
-then
-  wget https://www.kernel.org/pub/software/scm/git/git-${GIT_VER}.tar.gz
+  tar xzf git-${GIT_VER}.tar.gz
+
+  cd git-${GIT_VER}
+
+  ./configure --with-openssl --with-curl --with-expat --with-perl --prefix=/opt/git-${GIT_VER}
+
+
+  make
+  make install
 fi
-
-
-
-tar xzf git-${GIT_VER}.tar.gz
-
-cd git-${GIT_VER}
-
-
-
-./configure --with-openssl --with-curl --with-expat --with-perl --prefix=/opt/git-${GIT_VER}
-
-
-# If you use old debian
-# vi http.h
-
-# comment out follow line
-
-# -----------------------------------------------------------
-#if LIBCURL_VERSION_NUM >= 0x071000
-# ...
-#endif
-# -----------------------------------------------------------
-
-make
-make install
 
 
 pushd /opt
