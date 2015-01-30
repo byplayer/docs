@@ -34,6 +34,7 @@ if [ -d git-${GIT_VER} ]; then
 fi
 
 tar xzf git-${GIT_VER}.tar.gz
+rm -r git-${GIT_VER}.tar.gz
 
 cd git-${GIT_VER}
 
@@ -45,6 +46,9 @@ make install
 
 make man
 make install-man
+
+cd ..
+rm -r git-${GIT_VER}
 
 
 # If you want to use git svn, you need to install perl svn .
