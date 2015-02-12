@@ -7,7 +7,7 @@
 aptitude install -y gettext tcl tk libsvn-perl asciidoc libcurl4-dev libcurl4-openssl-dev curl\
   libexpat-dev zlib1g-dev libbz2-dev
 
-GIT_VER=2.2.2
+GIT_VER=2.3.0
 INSTALL_DIR=/opt/git
 
 ${INSTALL_DIR}/bin/git --version 2> /dev/null | grep ${GIT_VER} > /dev/null 2>&1
