@@ -47,6 +47,8 @@ make install
 make man
 make install-man
 
+cp -r contrib ${INSTALL_DIR}/
+
 cd ..
 rm -r git-${GIT_VER}
 
