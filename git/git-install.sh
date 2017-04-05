@@ -13,6 +13,8 @@ apt -y install gettext tcl tk libsvn-perl asciidoc libcurl4-openssl-dev curl\
 GIT_VER=2.12.2
 INSTALL_DIR=/opt/git
 
+set +e
+
 ${INSTALL_DIR}/bin/git --version 2> /dev/null | grep ${GIT_VER} > /dev/null 2>&1
 result=$?
 if [ $result -eq 0 ]; then
