@@ -10,7 +10,7 @@ set -e
 apt -y install gettext tcl tk libsvn-perl asciidoc libcurl4-openssl-dev curl\
   libexpat-dev zlib1g-dev libbz2-dev
 
-GIT_VER=2.12.2
+GIT_VER=2.13.0
 INSTALL_DIR=/opt/git
 
 set +e
