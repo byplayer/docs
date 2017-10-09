@@ -52,6 +52,11 @@ make install
 make man
 make install-man
 
+# contrib
+pushd contrib/diff-highlight
+make
+popd
+
 cp -r contrib ${INSTALL_DIR}/
 
 cd ..
