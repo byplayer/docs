@@ -24,10 +24,6 @@ fi
 
 set -e
 
-if [ -d ${INSTALL_DIR} ]; then
-    rm -rf ${INSTALL_DIR}
-fi
-
 cd /usr/local/src
 
 if [ ! -f git-${GIT_VER}.tar.gz ]; then
@@ -44,12 +40,14 @@ rm -r git-${GIT_VER}.tar.gz
 cd git-${GIT_VER}
 
 ./configure --with-openssl --with-curl --with-expat --with-perl --prefix=${INSTALL_DIR}
-
-
 make
-make install
-
 make man
+
+if [ -d ${INSTALL_DIR} ]; then
+    rm -rf ${INSTALL_DIR}
+fi
+
+make install
 make install-man
 
 # contrib
